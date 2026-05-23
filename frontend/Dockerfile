@@ -7,13 +7,13 @@ COPY package.json yarn.lock ./
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 RUN yarn install --frozen-lockfile || yarn install
 
-# Install serve as a global dependency for production serving
+# Install serve globally for production
 RUN npm install -g serve
 
 COPY ./ ./
 
-# Build - skip tsc (vite handles transpilation, strict mode tsc may fail)
-ENV NODE_OPTIONS="--max-old-space-size=512"
+# Build with increased memory limit (this project is large)
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN yarn build
 
 EXPOSE 80
