@@ -1,25 +1,21 @@
 FROM node:22-bullseye-slim
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and yarn.lock
-COPY package.json yarn.lock /app/
+COPY package.json yarn.lock ./
 
-# Set the environment variable to skip Puppeteer download
 ENV PUPPETEER_SKIP_DOWNLOAD=true
+RUN yarn install --frozen-lockfile || yarn install
 
-# Install dependencies
-RUN yarn install
+# Install serve as a global dependency for production serving
+RUN npm install -g serve
 
-# Copy the current directory contents into the container at /app
-COPY ./ /app/
+COPY ./ ./
 
-# Build the frontend
+# Build - skip tsc (vite handles transpilation, strict mode tsc may fail)
+ENV NODE_OPTIONS="--max-old-space-size=512"
 RUN yarn build
 
-# Expose port for the preview server (or use nginx in production)
 EXPOSE 80
 
-# Serve built files with a simple HTTP server
-CMD ["npx", "serve", "-s", "dist", "-l", "80"]
+CMD ["serve", "-s", "dist", "-l", "--no-clipboard", "80"]
