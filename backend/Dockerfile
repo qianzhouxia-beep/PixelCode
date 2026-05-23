@@ -19,3 +19,9 @@ RUN poetry install
 
 # Copy the current directory contents into the container at /app
 COPY ./ /app/
+
+# Expose port
+EXPOSE 7001
+
+# Start the backend server
+CMD ["python", "start.py", "--port", "7001"]

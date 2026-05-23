@@ -15,8 +15,11 @@ RUN yarn install
 # Copy the current directory contents into the container at /app
 COPY ./ /app/
 
-# Expose port 5173 to access the server
-EXPOSE 5173
+# Build the frontend
+RUN yarn build
 
-# Command to run the application
-CMD ["yarn", "dev", "--host", "0.0.0.0"]
+# Expose port for the preview server (or use nginx in production)
+EXPOSE 80
+
+# Serve built files with a simple HTTP server
+CMD ["npx", "serve", "-s", "dist", "-l", "80"]
