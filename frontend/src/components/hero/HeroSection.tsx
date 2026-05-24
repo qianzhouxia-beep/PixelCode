@@ -65,7 +65,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
             alt="PixelCode"
             className="h-10 w-auto transition-transform group-hover:scale-105"
           />
-          <span className="text-xl font-bold text-white tracking-tight">PixelCode</span>
+          <span className="text-xl font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent tracking-tight">PixelCode</span>
         </a>
 
         {/* Desktop Nav Links */}
