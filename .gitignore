@@ -6,7 +6,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+/dist/  # only match root dist/, not frontend/dist/
 downloads/
 eggs/
 .eggs/
@@ -36,7 +36,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # === Frontend Build ===
-frontend/dist/
+# frontend/dist/ - committed for Zeabur deployment (pre-built to avoid OOM)
+# frontend/dist/
 frontend/.env.local
 frontend/.env.development.local
 frontend/.env.test.local
