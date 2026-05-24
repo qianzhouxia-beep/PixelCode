@@ -2,20 +2,14 @@ FROM node:22-bullseye-slim
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+# Copy pre-built dist/ (built locally, committed to Git)
+# No yarn install, no yarn build - avoids Zeabur OOM
+COPY dist/ ./dist/
 
-ENV PUPPETEER_SKIP_DOWNLOAD=true
-RUN yarn install --frozen-lockfile || yarn install
-
-# Install serve globally for production
+# Install serve globally for production serving
 RUN npm install -g serve
-
-COPY ./ ./
-
-# Build with increased memory limit (this project is large)
-ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN yarn build
 
 EXPOSE 80
 
+# Serve dist/ on port 80
 CMD ["serve", "-s", "dist", "-l", "--no-clipboard", "80"]
