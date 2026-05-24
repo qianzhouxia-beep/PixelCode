@@ -12,7 +12,8 @@ export default ({ mode }) => {
     plugins: [
       react(),
       checker({ 
-        typescript: true
+        // 仅在开发模式开启类型检查，生产构建跳过以规避 @codemirror 类型冲突
+        typescript: mode === 'development'
       }),
       createHtmlPlugin({
         inject: {
