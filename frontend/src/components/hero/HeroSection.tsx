@@ -59,12 +59,13 @@ function HeroSection({ onStart }: HeroSectionProps) {
       {/* Navbar */}
       <nav className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 group">
+        <a href="/" className="flex items-center gap-2.5 group">
           <img
             src="/pixelcode-logo.png"
             alt="PixelCode"
-            className="h-8 w-auto transition-transform group-hover:scale-105"
+            className="h-10 w-auto transition-transform group-hover:scale-105"
           />
+          <span className="text-xl font-bold text-white tracking-tight">PixelCode</span>
         </a>
 
         {/* Desktop Nav Links */}
