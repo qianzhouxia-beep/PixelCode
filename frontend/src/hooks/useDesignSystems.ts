@@ -18,8 +18,8 @@ export function useDesignSystems() {
       setIsLoading(true);
       setDesignSystems(await fetchDesignSystems());
     } catch (error) {
-      console.error("Failed to load design systems", error);
-      toast.error("Could not load design systems from the backend.");
+      console.warn("Could not load design systems (non-critical)", error);
+      // Silently fall back to empty array — no toast for non-critical feature
     } finally {
       setIsLoading(false);
     }
