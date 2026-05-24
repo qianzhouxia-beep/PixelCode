@@ -1,25 +1,16 @@
 export function OnboardingNote() {
   return (
-    <div className="flex flex-col space-y-4 bg-green-700 p-2 rounded text-stone-200 text-sm">
+    <div className="flex flex-col space-y-4 bg-violet-700 p-2 rounded text-stone-200 text-sm">
       <span>
-        To use Screenshot to Code,{" "}
+        欢迎使用 <strong>PixelCode</strong>！上传截图或设计稿，AI 自动生成高质量前端代码。
+        免费用户每日 3 次体验。需要更多次数？{" "}
         <a
-          className="inline underline hover:opacity-70"
-          href="https://buy.stripe.com/8wM6sre70gBW1nqaEE"
+          className="inline underline hover:opacity-70 font-semibold"
+          href="#pricing"
           target="_blank"
         >
-          buy some credits (100 generations for $36)
-        </a>{" "}
-        or use your own OpenAI API key with GPT4 vision access.{" "}
-        <a
-          href="https://github.com/abi/screenshot-to-code/blob/main/Troubleshooting.md"
-          className="inline underline hover:opacity-70"
-          target="_blank"
-        >
-          Follow these instructions to get yourself a key.
-        </a>{" "}
-        and paste it in the Settings dialog (gear icon above). Your key is only
-        stored in your browser. Never stored on our servers.
+          查看定价方案 →
+        </a>
       </span>
     </div>
   );

@@ -11,5 +11,9 @@
   "workspaces": [
     "frontend",
     "backend"
-  ]
+  ],
+  "dependencies": {
+    "@esbuild/win32-x64": "^0.28.0",
+    "lucide-react": "^1.16.0"
+  }
 }

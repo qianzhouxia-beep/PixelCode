@@ -4,6 +4,7 @@ import { AppState, AppTheme, EditorTheme, Settings } from "./types";
 import { NEW_DESIGN_SYSTEM_CONTENT } from "./lib/design-systems";
 import { IS_RUNNING_ON_CLOUD } from "./config";
 import { PicoBadge } from "./components/messages/PicoBadge";
+import { HeroSection } from "./components/hero/HeroSection";
 import { OnboardingNote } from "./components/messages/OnboardingNote";
 import { usePersistedState } from "./hooks/usePersistedState";
 import TermsOfServiceDialog from "./components/TermsOfServiceDialog";
@@ -113,6 +114,7 @@ function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [mobilePane, setMobilePane] = useState<"preview" | "chat">("preview");
+  const [showHero, setShowHero] = useState(true);
   const [isDesignSystemsModalOpen, setIsDesignSystemsModalOpen] =
     useState(false);
   const [designSystemsModalInitialId, setDesignSystemsModalInitialId] =
@@ -886,7 +888,11 @@ function App() {
           />
         ) : (
           <>
-            {appState === AppState.INITIAL && (
+            {showHero && appState === AppState.INITIAL && (
+              <HeroSection onStart={() => setShowHero(false)} />
+            )}
+
+            {!showHero && appState === AppState.INITIAL && (
               <StartPane
                 doCreate={doCreate}
                 doCreateFromText={doCreateFromText}

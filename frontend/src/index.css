@@ -34,6 +34,13 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
+    /* PixelCode brand variables */
+    --font-heading: 'Helvetica Now Display Bold', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --color-text: #192837;
+    --color-accent: #7342E2;
+    --color-login-bg: #F2F2EE;
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
 
