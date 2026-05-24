@@ -3,7 +3,7 @@ FROM python:3.12.3-slim-bullseye
 ENV POETRY_VERSION 1.8.0
 
 # Install system dependencies
-RUN pip install "poetry==$POETRY_VERSION"
+RUN pip install --no-cache-dir "poetry==$POETRY_VERSION"
 
 # Set work directory
 WORKDIR /app
@@ -14,8 +14,8 @@ COPY poetry.lock pyproject.toml /app/
 # Disable the creation of virtual environments
 RUN poetry config virtualenvs.create false
 
-# Install dependencies
-RUN poetry install
+# Install dependencies (with verbose output for debugging)
+RUN poetry install --no-interaction 2>&1 | tail -20 || { echo "=== POETRY INSTALL FAILED ===" && exit 1; }
 
 # Copy the current directory contents into the container at /app
 COPY ./ /app/
@@ -24,4 +24,4 @@ COPY ./ /app/
 EXPOSE 7001
 
 # Start the backend server
-CMD ["python", "start.py", "--port", "7001"]
+CMD ["python", "-u", "start.py", "--port", "7001"]
