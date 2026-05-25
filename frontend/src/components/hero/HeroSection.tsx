@@ -313,7 +313,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4"
+          className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-4"
         >
           {[
             {
@@ -337,8 +337,8 @@ function HeroSection({ onStart }: HeroSectionProps) {
           ].map((item, i) => (
             <div key={item.step} className="flex items-center">
               <div
-                className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 backdrop-blur-sm"
-                style={{ minWidth: '200px', minHeight: '80px' }}
+                className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 backdrop-blur-sm self-center"
+                style={{ minWidth: '200px' }}
               >
                 <div
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
