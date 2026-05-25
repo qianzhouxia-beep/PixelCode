@@ -149,19 +149,12 @@ function HeroSection({ onStart }: HeroSectionProps) {
               }}
             >
               截图转代码，{' '}
-              <span className="inline-flex items-center gap-2">
-                <Upload
-                  size={28}
-                  style={{ position: 'relative', top: '-3px' }}
-                />
+              <span className="inline-flex items-center gap-1.5">
+                <Upload size={26} className="text-violet-300" />
                 AI
               </span>{' '}
               驱动{' '}
-              <Sparkles
-                size={28}
-                className="inline-block text-violet-400"
-                style={{ position: 'relative', top: '-3px' }}
-              />
+              <Sparkles size={22} className="inline-block text-violet-400 ml-1" />
             </motion.h1>
 
             {/* Subtext */}
@@ -316,6 +309,63 @@ function HeroSection({ onStart }: HeroSectionProps) {
           </>
         )}
       </AnimatePresence>
+
+      {/* Workflow Preview Section - P2 */}
+      <section
+        className="relative z-10 mx-auto w-full max-w-[1000px] px-5 sm:px-8"
+        style={{ paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(20px, 4vw, 40px)' }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4"
+        >
+          {[
+            {
+              icon: <Upload size={22} />,
+              step: '01',
+              title: '上传截图',
+              desc: '拖拽或粘贴设计稿',
+            },
+            {
+              icon: <Sparkles size={22} />,
+              step: '02',
+              title: 'AI 分析',
+              desc: '智能识别布局与样式',
+            },
+            {
+              icon: <Code2 size={22} />,
+              step: '03',
+              title: '导出代码',
+              desc: '一键复制或下载',
+            },
+          ].map((item, i) => (
+            <div key={item.step} className="flex items-center gap-4 md:gap-3">
+              <div
+                className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 backdrop-blur-sm"
+                style={{ minWidth: i === 1 ? '220px' : '180px' }}
+              >
+                <div
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                  style={{ background: 'rgba(115, 66, 226, 0.12)', color: '#7342E2' }}
+                >
+                  {item.icon}
+                </div>
+                <div>
+                  <div className="text-[10px] font-medium uppercase tracking-widest text-white/30">Step {item.step}</div>
+                  <div className="text-sm font-semibold text-white">{item.title}</div>
+                  <div className="text-xs text-white/40">{item.desc}</div>
+                </div>
+              </div>
+              {i < 2 && (
+                <ArrowRight size={16} className="hidden md:block text-white/15 shrink-0" />
+              )}
+            </div>
+          ))}
+        </motion.div>
+      </section>
 
       {/* Features Section */}
       <section
