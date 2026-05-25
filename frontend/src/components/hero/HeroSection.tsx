@@ -6,6 +6,11 @@ import {
   X,
   Upload,
   Sparkles,
+  Code2,
+  CheckCircle,
+  Zap,
+  Layers,
+  Globe,
 } from 'lucide-react';
 
 const navItems = ['功能', '定价', '文档', '关于'];
@@ -18,7 +23,7 @@ const fadeUp = (i: number) => ({
     transition: {
       delay: i * 0.15,
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      ease: "easeInOut",
     },
   },
 });
@@ -194,7 +199,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                   fontFamily: 'var(--font-body)',
                   fontWeight: 600,
                   fontSize: 'clamp(0.9rem, 2vw, 1rem)',
-                  boxShadow: '0 4px 24px rgba(115,66,226,0.28)',
+                  boxShadow: '0 4px 24px rgba(115,66,226,0.35)',
                 }}
               >
                 <span>上传截图开始</span>
@@ -312,6 +317,115 @@ function HeroSection({ onStart }: HeroSectionProps) {
           </>
         )}
       </AnimatePresence>
+
+      {/* Features Section */}
+      <section
+        className="relative z-10 mx-auto w-full max-w-[1280px] px-5 sm:px-8"
+        style={{ paddingTop: 'clamp(80px, 10vw, 120px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center"
+        >
+          <h2
+            className="font-bold text-white"
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+              lineHeight: 1.15,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            为什么选择 <span style={{ color: '#7342E2' }}>PixelCode</span>
+          </h2>
+          <p className="mt-4 text-white/50 text-base max-w-xl mx-auto">
+            从截图到生产级代码，只需几秒
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: <Zap size={24} />,
+              title: '秒级生成',
+              desc: '上传截图或设计稿，AI 自动生成高质量前端代码，无需手动编写',
+            },
+            {
+              icon: <Code2 size={24} />,
+              title: '多框架支持',
+              desc: '支持 HTML/Tailwind、React、Vue 等主流框架，一键切换技术栈',
+            },
+            {
+              icon: <Globe size={24} />,
+              title: '中文优化',
+              desc: '针对中文设计稿深度优化，排版、字体、间距识别更精准',
+            },
+            {
+              icon: <Layers size={24} />,
+              title: '批量处理',
+              desc: '多页面批量生成，Design System 统一管理，团队协作高效',
+            },
+            {
+              icon: <CheckCircle size={24} />,
+              title: '代码优化',
+              desc: '生成代码自动格式化、响应式适配，可直接用于生产环境',
+            },
+            {
+              icon: <Upload size={24} />,
+              title: '多模态输入',
+              desc: '支持截图、设计稿、视频录制、文字描述等多种输入方式',
+            },
+          ].map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{
+                delay: i * 0.08,
+                duration: 0.5,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#7342E2]/30 hover:bg-white/[0.06]"
+            >
+              <div
+                className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition-colors duration-300"
+                style={{
+                  background: 'rgba(115, 66, 226, 0.12)',
+                  color: '#7342E2',
+                }}
+              >
+                {feature.icon}
+              </div>
+              <h3 className="mb-2 text-white font-semibold text-base">
+                {feature.title}
+              </h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                {feature.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/[0.06] py-10 px-5 sm:px-8">
+        <div className="mx-auto max-w-[1280px] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <img src="/pixelcode-logo.png" alt="PixelCode" className="h-7 w-auto" />
+            <span className="text-sm font-medium text-white/40">© 2026 PixelCode</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">文档</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">GitHub</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">隐私政策</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">服务条款</a>
+          </div>
+        </div>
+      </footer>
     </section>
   );
 }

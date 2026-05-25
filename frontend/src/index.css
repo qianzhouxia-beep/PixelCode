@@ -34,12 +34,19 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
-    /* PixelCode brand variables */
-    --font-heading: 'Helvetica Now Display Bold', sans-serif;
+    /* PixelCode brand variables — Vercel-inspired design system */
+    --font-heading: 'Helvetica Now Display Bold', 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
+    --color-primary: #7342E2;
+    --color-primary-hover: #5B2ECC;
     --color-text: #192837;
+    --color-text-muted: #6B7280;
+    --color-bg: #FFFFFF;
+    --color-bg-muted: #F9FAFB;
     --color-accent: #7342E2;
     --color-login-bg: #F2F2EE;
+    --color-surface: #FFFFFF;
+    --color-surface-border: rgba(0, 0, 0, 0.06);
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
