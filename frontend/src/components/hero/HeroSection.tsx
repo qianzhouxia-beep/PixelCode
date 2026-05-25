@@ -189,7 +189,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                 }}
               >
                 <span>上传截图开始</span>
-                <ArrowRight size={20} />
+                <ChevronRight size={20} />
               </motion.button>
             </motion.div>
           </div>
