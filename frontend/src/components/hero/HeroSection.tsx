@@ -43,21 +43,34 @@ function HeroSection({ onStart }: HeroSectionProps) {
         color: 'var(--color-text)',
       }}
     >
-      {/* Background gradient */}
+      {/* Background gradient + noise */}
       <div
         className="absolute inset-0 z-0"
         style={{
           background: 'linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #24243e 100%)',
         }}
       />
-      
-      {/* Subtle Overlay */}
-      <div className="absolute inset-0 bg-black/20 z-[1]" />
+      {/* Noise overlay for texture */}
+      <div
+        className="absolute inset-0 z-[1] opacity-[0.025]"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22256%22 height=%22256%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E")',
+          }}
+      />
 
       {/* Main Content */}
       <div className="relative z-10">
-        {/* Navbar */}
-        <nav className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+        {/* Navbar with glass effect */}
+        <nav
+          className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8 sm:py-5"
+          style={{
+            position: 'relative',
+            zIndex: 20,
+            background: 'rgba(15, 12, 41, 0.75)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+          }}
+        >
           {/* Logo */}
           <div className="flex items-center">
             <img
@@ -127,33 +140,27 @@ function HeroSection({ onStart }: HeroSectionProps) {
               variants={fadeUp(0)}
               initial="hidden"
               animate="visible"
-              className="mb-6 font-bold text-white"
+              className="mb-6 font-black text-white"
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.65rem, 5vw, 3rem)',
+                fontSize: 'clamp(1.875rem, 5vw, 3.5rem)',
                 lineHeight: 1.05,
-                letterSpacing: '-0.01em',
+                letterSpacing: '-0.02em',
               }}
             >
               截图转代码，{' '}
               <span className="inline-flex items-center gap-2">
                 <Upload
-                  size={24}
-                  style={{
-                    position: 'relative',
-                    top: '-2px',
-                  }}
+                  size={28}
+                  style={{ position: 'relative', top: '-3px' }}
                 />
                 AI
               </span>{' '}
               驱动{' '}
               <Sparkles
-                size={24}
+                size={28}
                 className="inline-block text-violet-400"
-                style={{
-                  position: 'relative',
-                  top: '-2px',
-                }}
+                style={{ position: 'relative', top: '-3px' }}
               />
             </motion.h1>
 
@@ -162,11 +169,12 @@ function HeroSection({ onStart }: HeroSectionProps) {
               variants={fadeUp(1)}
               initial="hidden"
               animate="visible"
-              className="max-w-[560px] text-white/65"
+              className="max-w-[560px] text-white/50"
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
+                fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)',
                 lineHeight: 1.65,
+                letterSpacing: '0.01em',
               }}
             >
               上传截图或设计稿，PixelCode 自动生成高质量前端代码。
@@ -181,18 +189,13 @@ function HeroSection({ onStart }: HeroSectionProps) {
               className="mt-10"
             >
               <motion.button
-                whileHover={{
-                  scale: 1.04,
-                  filter: 'brightness(1.1)',
-                }}
-                whileTap={{
-                  scale: 0.96,
-                }}
+                whileHover={{ scale: 1.02, y: 2 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={onStart}
                 className="flex min-w-[210px] items-center justify-between gap-8 rounded-full text-white"
                 style={{
                   background: '#7342E2',
-                  padding: '17px 24px',
+                  padding: '15px 24px',
                   fontFamily: 'var(--font-body)',
                   fontWeight: 600,
                   fontSize: 'clamp(0.9rem, 2vw, 1rem)',
