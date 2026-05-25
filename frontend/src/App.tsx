@@ -7,7 +7,7 @@ import { PicoBadge } from "./components/messages/PicoBadge";
 import { HeroSection } from "./components/hero/HeroSection";
 import { OnboardingNote } from "./components/messages/OnboardingNote";
 import { usePersistedState } from "./hooks/usePersistedState";
-import TermsOfServiceDialog from "./components/TermsOfServiceDialog";
+// Removed: TermsOfServiceDialog (email collection popup - not needed for PixelCode)
 import { USER_CLOSE_WEB_SOCKET_CODE } from "./constants";
 import toast from "react-hot-toast";
 import { nanoid } from "nanoid";
@@ -739,12 +739,7 @@ function App() {
       }`}
     >
       {IS_RUNNING_ON_CLOUD && <PicoBadge />}
-      {IS_RUNNING_ON_CLOUD && (
-        <TermsOfServiceDialog
-          open={!settings.isTermOfServiceAccepted}
-          onOpenChange={handleTermDialogOpenChange}
-        />
-      )}
+      {/* TermsOfServiceDialog removed - no email collection popup */}
 
       {/* Icon strip - hidden on hero/home page */}
       {!showHero && (
