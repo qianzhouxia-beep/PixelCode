@@ -31,26 +31,26 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
       <div className="px-4 py-4 lg:px-6 lg:py-6">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <h1 className="text-lg font-semibold text-gray-100">
             Settings
           </h1>
         </div>
 
         <div className="mx-auto max-w-lg space-y-6">
           {/* Theme */}
-          <div className="rounded-lg border border-gray-200 bg-white dark:border-zinc-700 dark:bg-zinc-800/60">
-            <div className="border-b border-gray-100 px-4 py-3 dark:border-zinc-700">
-              <h2 className="text-sm font-medium text-gray-900 dark:text-white">
+          <div className="rounded-lg border border-white/10 bg-white/5">
+            <div className="border-b border-white/10 px-4 py-3">
+              <h2 className="text-sm font-medium text-gray-100">
                 Theme
               </h2>
             </div>
-            <div className="divide-y divide-gray-100 dark:divide-zinc-700">
+            <div className="divide-y divide-white/10">
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
-                  <span className="text-sm text-gray-700 dark:text-zinc-300">
+                  <span className="text-sm text-gray-200">
                     App Theme
                   </span>
-                  <p className="mt-0.5 text-xs text-gray-500 dark:text-zinc-400">
+                  <p className="mt-0.5 text-xs text-gray-400">
                     System default, with optional light/dark override
                   </p>
                 </div>
@@ -71,10 +71,10 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
               </div>
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
-                  <span className="text-sm text-gray-700 dark:text-zinc-300">
+                  <span className="text-sm text-gray-200">
                     Code Editor Theme
                   </span>
-                  <p className="mt-0.5 text-xs text-gray-500 dark:text-zinc-400">
+                  <p className="mt-0.5 text-xs text-gray-400">
                     Requires page refresh to update
                   </p>
                 </div>
@@ -104,18 +104,18 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           </div>
 
           {/* API Keys */}
-          <div className="rounded-lg border border-gray-200 bg-white dark:border-zinc-700 dark:bg-zinc-800/60">
-            <div className="border-b border-gray-100 px-4 py-3 dark:border-zinc-700">
-              <h2 className="text-sm font-medium text-gray-900 dark:text-white">
+          <div className="rounded-lg border border-white/10 bg-white/5">
+            <div className="border-b border-white/10 px-4 py-3">
+              <h2 className="text-sm font-medium text-gray-100">
                 API Keys
               </h2>
             </div>
             <div className="space-y-4 p-4">
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-zinc-300">
+                <p className="text-sm font-medium text-gray-200">
                   OpenAI API key
                 </p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-zinc-400">
+                <p className="mt-1 text-xs text-gray-400">
                   Only stored in your browser. Never stored on servers. Overrides
                   your .env config.
                 </p>
@@ -135,10 +135,10 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
 
               {!IS_RUNNING_ON_CLOUD && (
                 <div>
-                  <p className="text-sm font-medium text-gray-700 dark:text-zinc-300">
+                  <p className="text-sm font-medium text-gray-200">
                     OpenAI Base URL (optional)
                   </p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-zinc-400">
+                  <p className="mt-1 text-xs text-gray-400">
                     Replace with a proxy URL if you don't want to use the
                     default.
                   </p>
@@ -158,10 +158,10 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
               )}
 
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-zinc-300">
+                <p className="text-sm font-medium text-gray-200">
                   Anthropic API key
                 </p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-zinc-400">
+                <p className="mt-1 text-xs text-gray-400">
                   Only stored in your browser. Never stored on servers. Overrides
                   your .env config.
                 </p>
@@ -180,10 +180,10 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
               </div>
 
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-zinc-300">
+                <p className="text-sm font-medium text-gray-200">
                   Gemini API key
                 </p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-zinc-400">
+                <p className="mt-1 text-xs text-gray-400">
                   Only stored in your browser. Never stored on servers. Overrides
                   your .env config.
                 </p>
@@ -204,19 +204,19 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           </div>
 
           {/* Image Generation */}
-          <div className="rounded-lg border border-gray-200 bg-white dark:border-zinc-700 dark:bg-zinc-800/60">
-            <div className="border-b border-gray-100 px-4 py-3 dark:border-zinc-700">
-              <h2 className="text-sm font-medium text-gray-900 dark:text-white">
+          <div className="rounded-lg border border-white/10 bg-white/5">
+            <div className="border-b border-white/10 px-4 py-3">
+              <h2 className="text-sm font-medium text-gray-100">
                 Image Generation
               </h2>
             </div>
             <div className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-700 dark:text-zinc-300">
+                  <p className="text-sm text-gray-200">
                     Placeholder Images
                   </p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-zinc-400">
+                  <p className="mt-1 text-xs text-gray-400">
                     More fun with it but if you want to save money, turn it off.
                   </p>
                 </div>
@@ -235,19 +235,19 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           </div>
 
           {/* Screenshot by URL */}
-          <div className="rounded-lg border border-gray-200 bg-white dark:border-zinc-700 dark:bg-zinc-800/60">
-            <div className="border-b border-gray-100 px-4 py-3 dark:border-zinc-700">
-              <h2 className="text-sm font-medium text-gray-900 dark:text-white">
+          <div className="rounded-lg border border-white/10 bg-white/5">
+            <div className="border-b border-white/10 px-4 py-3">
+              <h2 className="text-sm font-medium text-gray-100">
                 Screenshot by URL
               </h2>
             </div>
             <div className="p-4">
-              <p className="text-xs text-gray-500 dark:text-zinc-400">
+              <p className="text-xs text-gray-400">
                 If you want to use URLs directly instead of taking the screenshot
                 yourself, add a ScreenshotOne API key.{" "}
                 <a
                   href="https://screenshotone.com?via=screenshot-to-code"
-                  className="text-violet-600 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300"
+                  className="text-purple-400 hover:text-purple-300"
                   target="_blank"
                 >
                   Get 100 screenshots/mo for free.

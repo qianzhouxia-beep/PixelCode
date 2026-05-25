@@ -35,7 +35,7 @@ const StartPane: React.FC<Props & { onBackToHome?: () => void }> = ({
       {onBackToHome && (
         <button
           onClick={onBackToHome}
-          className="mb-6 flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+          className="mb-6 flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           返回首页

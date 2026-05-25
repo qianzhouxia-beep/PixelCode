@@ -94,8 +94,8 @@ function UrlTab({
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="w-full max-w-lg">
-        <div className="flex flex-col items-center gap-6 p-8 border border-gray-200 dark:border-zinc-700 rounded-xl bg-gray-50/50 dark:bg-zinc-900/50">
-          <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-zinc-800 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-6 p-8 border border-white/10 rounded-xl bg-white/5">
+          <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -106,7 +106,7 @@ function UrlTab({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-gray-400 dark:text-zinc-500"
+              className="text-gray-500"
             >
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
@@ -114,7 +114,7 @@ function UrlTab({
           </div>
 
           <div className="text-center">
-            <h3 className="text-gray-700 dark:text-zinc-200 font-medium">Screenshot from URL</h3>
+            <h3 className="text-gray-200 font-medium">Screenshot from URL</h3>
           </div>
 
           <div className="w-full space-y-3">
@@ -131,7 +131,7 @@ function UrlTab({
               data-testid="url-input"
             />
             {isFigmaUrl(referenceUrl) && (
-              <p className="text-xs text-amber-600 dark:text-amber-400">
+              <p className="text-xs text-amber-400">
                 Direct Figma import is not supported. Take a screenshot of your
                 design or export the artboards as images, then use the Upload
                 tab.
@@ -180,7 +180,7 @@ function UrlTab({
             </Button>
           </div>
 
-          <p className="text-xs text-gray-400 dark:text-zinc-500 text-center">
+          <p className="text-xs text-gray-500 text-center">
             Requires ScreenshotOne API key.
           </p>
         </div>

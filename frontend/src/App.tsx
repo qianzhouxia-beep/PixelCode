@@ -732,11 +732,11 @@ function App() {
 
   return (
     <div
-      className={`dark:bg-black dark:text-white ${
+      className={`${
         appState === AppState.CODING || appState === AppState.CODE_READY
-          ? "flex h-dvh flex-col overflow-hidden lg:block lg:h-screen"
-          : "min-h-screen"
-      }`}
+          ? "flex h-dvh flex-col overflow-hidden lg:block lg:h-screen bg-[#0a0a1a]"
+          : showHero ? "min-h-screen" : "min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#1a1a3e] to-[#24243e]"
+      } text-white`}
     >
       {IS_RUNNING_ON_CLOUD && <PicoBadge />}
       {/* TermsOfServiceDialog removed - no email collection popup */}

@@ -66,7 +66,7 @@ function UnifiedInputPane({
         onValueChange={(value) => setActiveTab(value as InputTab)}
         className="w-full"
       >
-        <TabsList className="grid w-full grid-cols-4 mb-6 bg-white/50 backdrop-blur-sm dark:bg-zinc-900/50 rounded-xl p-1">
+        <TabsList className="grid w-full grid-cols-4 mb-6 bg-white/10 backdrop-blur-xl rounded-xl p-1 border border-white/10 shadow-lg">
           <TabsTrigger
             value="upload"
             className="flex items-center gap-2"
