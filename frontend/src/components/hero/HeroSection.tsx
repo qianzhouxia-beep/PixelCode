@@ -335,7 +335,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
               desc: '一键复制或下载',
             },
           ].map((item, i) => (
-            <div key={item.step} className="flex items-center gap-4 md:gap-3">
+            <div key={item.step} className="flex items-center">
               <div
                 className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 backdrop-blur-sm"
                 style={{ minWidth: i === 1 ? '220px' : '180px' }}
@@ -353,7 +353,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                 </div>
               </div>
               {i < 2 && (
-                <ArrowRight size={16} className="hidden md:block text-white/15 shrink-0" />
+                <ArrowRight size={18} className="hidden md:flex mx-3 md:mx-4 text-white/20 shrink-0 self-center" />
               )}
             </div>
           ))}
