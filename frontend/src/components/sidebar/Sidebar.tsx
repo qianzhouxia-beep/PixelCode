@@ -17,6 +17,7 @@ import { CodeGenerationModel } from "../../lib/models";
 import DesignSystemSelector, {
   DesignSystemSelectorProps,
 } from "../settings/DesignSystemSelector";
+import { useTranslation } from "../../i18n";
 
 interface SidebarProps {
   showSelectAndEditFeature: boolean;
@@ -85,6 +86,7 @@ function Sidebar({
   const [isDragging, setIsDragging] = useState(false);
   const [nowMs, setNowMs] = useState(() => Date.now());
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const {
     appState,
@@ -357,10 +359,10 @@ function Sidebar({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                 <WorkingPulse />
-                <span>Working...</span>
+                <span>{t('sidebar.working')}</span>
               </div>
               <div className="text-xs font-semibold text-gray-700 dark:text-gray-200">
-                Time so far {elapsedSeconds ? `${elapsedSeconds}s` : "--"}
+                {t('sidebar.time_so_far', { time: elapsedSeconds ? `${elapsedSeconds}s` : '--' })}
               </div>
             </div>
           </div>
@@ -373,7 +375,7 @@ function Sidebar({
           !isSelectedVariantError &&
           isSlowGeminiModel(selectedVariant?.model) && (
           <div className="mb-3 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-            Slow, high quality model. May take 5-10 mins on some images/videos.
+            {t('sidebar.slow_model_warning')}
           </div>
         )}
 
@@ -383,20 +385,20 @@ function Sidebar({
               Version {currentVersionNumber}
             </p>
             <p className="mt-1 text-sm text-gray-400 dark:text-gray-500">
-              You are viewing an older version
+              {t('sidebar.view_older_version')}
             </p>
             <div className="mt-4 flex gap-2">
               <button
                 onClick={onOpenVersions}
                 className="rounded-lg border border-gray-300 dark:border-zinc-600 px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 transition-colors"
               >
-                All versions
+                {t('sidebar.all_versions')}
               </button>
               <button
                 onClick={() => latestCommitHash && setHead(latestCommitHash)}
                 className="rounded-lg bg-gray-900 dark:bg-white px-4 py-2 text-sm font-medium text-white dark:text-black hover:bg-black dark:hover:bg-gray-200 transition-colors"
               >
-                View latest
+                {t('sidebar.view_latest')}
               </button>
             </div>
           </div>
@@ -422,7 +424,7 @@ function Sidebar({
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
             >
               <LuRefreshCw className="w-3.5 h-3.5" />
-              Retry
+              {t('sidebar.retry')}
             </button>
           </div>
         )}
@@ -434,7 +436,7 @@ function Sidebar({
               onClick={cancelCodeGeneration}
               className="w-full dark:text-white dark:bg-gray-700"
             >
-              Cancel All Generations
+              {t('sidebar.cancel_all')}
             </Button>
           </div>
         )}
@@ -444,7 +446,7 @@ function Sidebar({
           <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-md p-3 mb-2">
             <div className="text-red-800 dark:text-red-200 text-sm">
               <div className="font-medium mb-1">
-                This option failed to generate because
+                {t('sidebar.error_failed')}
               </div>
               {selectedVariantErrorMessage && (
                 <div className="mb-2">
@@ -458,15 +460,15 @@ function Sidebar({
                       onClick={() => setIsErrorExpanded(!isErrorExpanded)}
                       className="text-red-600 dark:text-red-400 text-xs underline mt-1 hover:text-red-800 dark:hover:text-red-300"
                     >
-                      {isErrorExpanded ? "Show less" : "Show more"}
+                      {isErrorExpanded ? t('sidebar.error_show_less') : t('sidebar.error_show_more')}
                     </button>
                   )}
                 </div>
               )}
               <div>
                 {isFirstGeneration
-                  ? "Click Retry to run the create request again."
-                  : "Switch to another option above to make updates."}
+                  ? t('sidebar.error_retry_hint_first')
+                  : t('sidebar.error_retry_hint_update')}
               </div>
             </div>
           </div>
@@ -513,7 +515,7 @@ function Sidebar({
                   <div className="flex items-center justify-between rounded-xl border border-violet-200 dark:border-violet-700 bg-violet-50 dark:bg-violet-900/20 px-3 py-2">
                     <div className="flex items-center gap-2">
                       <LuMousePointerClick className="w-3.5 h-3.5 text-violet-500 dark:text-violet-400 shrink-0" />
-                      <span className="text-sm font-medium text-violet-700 dark:text-violet-300">Click an element to edit it</span>
+                      <span className="text-sm font-medium text-violet-700 dark:text-violet-300">{t('sidebar.click_to_edit')}</span>
                     </div>
                     <button
                       onClick={toggleInSelectAndEditMode}
@@ -534,8 +536,8 @@ function Sidebar({
                 ref={textareaRef}
                 placeholder={
                   inSelectAndEditMode && selectedElement
-                    ? `Describe changes for the selected <${selectedElement.tagName.toLowerCase()}> element...`
-                    : "Tell the AI what to change..."
+                    ? t('sidebar.enter_edit_hint', { tag: selectedElement.tagName.toLowerCase() })
+                    : t('sidebar.update_placeholder')
                 }
                 onChange={(e) => {
                   setUpdateInstruction(e.target.value);
@@ -566,7 +568,7 @@ function Sidebar({
                           ? "bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400"
                           : "text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
                       }`}
-                      title={inSelectAndEditMode ? "Exit selection mode" : "Select an element in the preview to target your edit"}
+                      title={inSelectAndEditMode ? t('sidebar.exit_selection') : t('sidebar.select_mode_hint')}
                     >
                       <LuMousePointerClick className="w-[18px] h-[18px]" />
                     </button>

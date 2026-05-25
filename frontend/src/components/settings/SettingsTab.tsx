@@ -10,6 +10,7 @@ import {
 import { Input } from "../ui/input";
 import { Switch } from "../ui/switch";
 import { IS_RUNNING_ON_CLOUD } from "../../config";
+import { useTranslation } from "../../i18n";
 
 interface Props {
   settings: Settings;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
+  const { t } = useTranslation();
   const handleThemeChange = (theme: EditorTheme) => {
     setSettings((s) => ({
       ...s,
@@ -32,7 +34,7 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
         {/* Header */}
         <div className="mb-6">
           <h1 className="text-lg font-semibold text-gray-100">
-            Settings
+            {t('settings.title')}
           </h1>
         </div>
 
@@ -41,17 +43,17 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           <div className="rounded-lg border border-white/10 bg-white/5">
             <div className="border-b border-white/10 px-4 py-3">
               <h2 className="text-sm font-medium text-gray-100">
-                Theme
+                {t('settings.theme')}
               </h2>
             </div>
             <div className="divide-y divide-white/10">
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
                   <span className="text-sm text-gray-200">
-                    App Theme
+                    {t('settings.app_theme')}
                   </span>
                   <p className="mt-0.5 text-xs text-gray-400">
-                    System default, with optional light/dark override
+                    {t('settings.app_theme_desc')}
                   </p>
                 </div>
                 <Select
@@ -63,19 +65,19 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
                     {capitalize(appTheme)}
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value={AppTheme.SYSTEM}>System</SelectItem>
-                    <SelectItem value={AppTheme.LIGHT}>Light</SelectItem>
-                    <SelectItem value={AppTheme.DARK}>Dark</SelectItem>
+                    <SelectItem value={AppTheme.SYSTEM}>{t('settings.system')}</SelectItem>
+                    <SelectItem value={AppTheme.LIGHT}>{t('settings.light')}</SelectItem>
+                    <SelectItem value={AppTheme.DARK}>{t('settings.dark')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
                   <span className="text-sm text-gray-200">
-                    Code Editor Theme
+                    {t('settings.editor_theme')}
                   </span>
                   <p className="mt-0.5 text-xs text-gray-400">
-                    Requires page refresh to update
+                    {t('settings.editor_theme_desc')}
                   </p>
                 </div>
                 <Select
@@ -107,22 +109,21 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           <div className="rounded-lg border border-white/10 bg-white/5">
             <div className="border-b border-white/10 px-4 py-3">
               <h2 className="text-sm font-medium text-gray-100">
-                API Keys
+                {t('settings.api_keys')}
               </h2>
             </div>
             <div className="space-y-4 p-4">
               <div>
                 <p className="text-sm font-medium text-gray-200">
-                  OpenAI API key
+                  {t('settings.openai_key')}
                 </p>
                 <p className="mt-1 text-xs text-gray-400">
-                  Only stored in your browser. Never stored on servers. Overrides
-                  your .env config.
+                  {t('settings.openai_key_desc')}
                 </p>
                 <Input
                   id="openai-api-key"
                   className="mt-2"
-                  placeholder="OpenAI API key"
+                  placeholder={t('settings.openai_key')}
                   value={settings.openAiApiKey || ""}
                   onChange={(e) =>
                     setSettings((s) => ({
@@ -136,16 +137,15 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
               {!IS_RUNNING_ON_CLOUD && (
                 <div>
                   <p className="text-sm font-medium text-gray-200">
-                    OpenAI Base URL (optional)
+                    {t('settings.openai_base_url')}
                   </p>
                   <p className="mt-1 text-xs text-gray-400">
-                    Replace with a proxy URL if you don't want to use the
-                    default.
+                    {t('settings.openai_base_url_desc')}
                   </p>
                   <Input
                     id="openai-base-url"
                     className="mt-2"
-                    placeholder="OpenAI Base URL"
+                    placeholder={t('settings.openai_base_url')}
                     value={settings.openAiBaseURL || ""}
                     onChange={(e) =>
                       setSettings((s) => ({
@@ -159,16 +159,15 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
 
               <div>
                 <p className="text-sm font-medium text-gray-200">
-                  Anthropic API key
+                  {t('settings.anthropic_key')}
                 </p>
                 <p className="mt-1 text-xs text-gray-400">
-                  Only stored in your browser. Never stored on servers. Overrides
-                  your .env config.
+                  {t('settings.anthropic_key_desc')}
                 </p>
                 <Input
                   id="anthropic-api-key"
                   className="mt-2"
-                  placeholder="Anthropic API key"
+                  placeholder={t('settings.anthropic_key')}
                   value={settings.anthropicApiKey || ""}
                   onChange={(e) =>
                     setSettings((s) => ({
@@ -181,16 +180,15 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
 
               <div>
                 <p className="text-sm font-medium text-gray-200">
-                  Gemini API key
+                  {t('settings.gemini_key')}
                 </p>
                 <p className="mt-1 text-xs text-gray-400">
-                  Only stored in your browser. Never stored on servers. Overrides
-                  your .env config.
+                  {t('settings.gemini_key_desc')}
                 </p>
                 <Input
                   id="gemini-api-key"
                   className="mt-2"
-                  placeholder="Gemini API key"
+                  placeholder={t('settings.gemini_key')}
                   value={settings.geminiApiKey || ""}
                   onChange={(e) =>
                     setSettings((s) => ({
@@ -207,17 +205,17 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           <div className="rounded-lg border border-white/10 bg-white/5">
             <div className="border-b border-white/10 px-4 py-3">
               <h2 className="text-sm font-medium text-gray-100">
-                Image Generation
+                {t('settings.image_generation')}
               </h2>
             </div>
             <div className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-200">
-                    Placeholder Images
+                    {t('settings.placeholder_images')}
                   </p>
                   <p className="mt-1 text-xs text-gray-400">
-                    More fun with it but if you want to save money, turn it off.
+                    {t('settings.placeholder_images_desc')}
                   </p>
                 </div>
                 <Switch
@@ -238,13 +236,12 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
           <div className="rounded-lg border border-white/10 bg-white/5">
             <div className="border-b border-white/10 px-4 py-3">
               <h2 className="text-sm font-medium text-gray-100">
-                Screenshot by URL
+                {t('settings.screenshot_url')}
               </h2>
             </div>
             <div className="p-4">
               <p className="text-xs text-gray-400">
-                If you want to use URLs directly instead of taking the screenshot
-                yourself, add a ScreenshotOne API key.{" "}
+                {t('settings.screenshot_url_desc')}{" "}
                 <a
                   href="https://screenshotone.com?via=screenshot-to-code"
                   className="text-purple-400 hover:text-purple-300"
@@ -256,7 +253,7 @@ function SettingsTab({ settings, setSettings, appTheme, setAppTheme }: Props) {
               <Input
                 id="screenshot-one-api-key"
                 className="mt-3"
-                placeholder="ScreenshotOne API key"
+                placeholder={t('settings.screenshot_key_placeholder')}
                 value={settings.screenshotOneApiKey || ""}
                 onChange={(e) =>
                   setSettings((s) => ({

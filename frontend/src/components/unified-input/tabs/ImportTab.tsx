@@ -5,6 +5,7 @@ import { Textarea } from "../../ui/textarea";
 import OutputSettingsSection from "../../settings/OutputSettingsSection";
 import toast from "react-hot-toast";
 import { Stack } from "../../../lib/stacks";
+import { useTranslation } from "../../../i18n";
 
 interface Props {
   importFromCode: (code: string, stack: Stack) => void;
@@ -15,6 +16,7 @@ function ImportTab({ importFromCode }: Props) {
   const [stack, setStack] = useState<Stack | undefined>(undefined);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isDraggingFile, setIsDraggingFile] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     textareaRef.current?.focus();
@@ -84,7 +86,7 @@ function ImportTab({ importFromCode }: Props) {
             </div>
 
             <div className="text-center">
-              <h3 className="text-gray-200 font-medium">Import Existing Code</h3>
+              <h3 className="text-gray-200 font-medium">{t('import.title')}</h3>
             </div>
           </div>
 
@@ -103,7 +105,7 @@ function ImportTab({ importFromCode }: Props) {
                 onChange={(e) => setCode(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="w-full h-48 font-mono text-sm resize-none"
-                placeholder="Paste your HTML code here or drag/drop a .html file..."
+                placeholder={t('import.placeholder')}
                 data-testid="import-input"
               />
             </div>
@@ -121,11 +123,11 @@ function ImportTab({ importFromCode }: Props) {
               size="lg"
               data-testid="import-submit"
             >
-              Import Code
+              {t('import.submit')}
             </Button>
 
             <p className="text-xs text-gray-500 text-center">
-              Press Cmd/Ctrl + Enter to import
+              {t('import.cmd_enter_hint')}
             </p>
           </div>
         </div>

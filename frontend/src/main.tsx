@@ -10,10 +10,12 @@ import RunEvalsPage from "./components/evals/RunEvalsPage.tsx";
 import BestOfNEvalsPage from "./components/evals/BestOfNEvalsPage.tsx";
 import AllEvalsPage from "./components/evals/AllEvalsPage.tsx";
 import OpenAIInputComparePage from "./components/evals/OpenAIInputComparePage.tsx";
+import { I18nProvider } from "./i18n";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router>
+    <I18nProvider>
+      <Router>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/evals" element={<AllEvalsPage />} />
@@ -27,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         />
       </Routes>
     </Router>
+    </I18nProvider>
     <Toaster toastOptions={{ className: "dark:bg-zinc-950 dark:text-white" }} />
   </React.StrictMode>
 );

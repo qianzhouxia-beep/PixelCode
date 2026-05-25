@@ -8,6 +8,7 @@ import ScreenRecorder from "../../recording/ScreenRecorder";
 import OutputSettingsSection from "../../settings/OutputSettingsSection";
 import { DesignSystemSelectorProps } from "../../settings/DesignSystemSelector";
 import { Stack } from "../../../lib/stacks";
+import { useTranslation } from "../../../i18n";
 
 function fileToDataURL(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -65,6 +66,7 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
   const filesRef = useRef<FileWithPreview[]>([]);
   const [screenRecorderState, setScreenRecorderState] =
     useState<ScreenRecorderState>(ScreenRecorderState.INITIAL);
+  const { t } = useTranslation();
 
   const hasUploadedFile = uploadedDataUrls.length > 0;
   const remainingSlots = Math.max(0, MAX_FILES - files.length);
@@ -307,7 +309,7 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
             </div>
             <div className="text-center">
               <p className="text-gray-200 font-medium">
-                Drop up to {MAX_FILES} screenshots or a single video
+                {t('upload.dropzone.title', { max: MAX_FILES })}
               </p>
             </div>
             <p className="text-xs text-gray-500 mt-2">
@@ -318,7 +320,7 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
               onClick={open}
               className="text-sm text-gray-400 hover:text-white underline"
             >
-              Browse files
+              {t('upload.dropzone.browse')}
             </button>
           </div>
         </div>
@@ -352,19 +354,19 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
               >
                 <input {...getInputProps()} />
                 <div className="flex items-center justify-between text-xs uppercase tracking-wide text-gray-500">
-                  <span>{`Uploaded Screenshots (${files.length}/${MAX_FILES})`}</span>
+                  <span>{t('upload.screenshots.count', { count: files.length, max: MAX_FILES })}</span>
                   <button
                     type="button"
                     onClick={handleClear}
                     className="text-xs text-gray-500 hover:text-white"
                   >
-                    Clear all
+                    {t('upload.screenshots.clear')}
                   </button>
                 </div>
                 <div className="mt-1 text-[11px] text-gray-500">
                   {isAtLimit
-                    ? "Limit reached"
-                    : `${remainingSlots} remaining`}
+                    ? t('upload.screenshots.limit_reached')
+                    : t('upload.screenshots.remaining', { count: remainingSlots })}
                 </div>
                 <div className="mt-3 rounded-md border border-white/10 bg-white/5 p-2 overflow-hidden">
                   <div className="flex h-[280px] w-full items-center justify-center overflow-hidden rounded bg-white/5">
@@ -429,11 +431,11 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
                   </button>
                 </div>
                 <div className="mt-2 text-xs text-gray-500">
-                  Drag and drop to add more screenshots
+                  {t('upload.drag_hint')}
                 </div>
                 {isDragActive && (
                   <div className="absolute inset-0 bg-purple-500/20 border-2 border-dashed border-purple-400 rounded-lg flex items-center justify-center pointer-events-none">
-                    <p className="text-purple-300 font-medium">Drop to add</p>
+                    <p className="text-purple-300 font-medium">{t('upload.drop_to_add')}</p>
                   </div>
                 )}
               </div>
@@ -448,7 +450,7 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
               }}
               className="text-sm text-gray-500 hover:text-white underline"
             >
-              Add instructions (optional)
+              {t('upload.add_instructions')}
             </button>
           ) : (
             <div className="w-full max-w-lg">
@@ -457,7 +459,7 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
                 value={textPrompt}
                 onChange={(e) => setTextPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Describe any specific requirements..."
+                placeholder={t('upload.instructions_placeholder')}
                 className="w-full p-3 text-sm border border-white/10 bg-white/5 text-gray-100 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-transparent placeholder:text-gray-500"
                 rows={2}
               />
@@ -479,9 +481,9 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
               size="lg"
               data-testid="upload-generate"
             >
-              Generate Code
+              {t('upload.generate_code')}
             </Button>
-            <p className="text-xs text-gray-500">Press Enter to generate</p>
+            <p className="text-xs text-gray-500">{t('upload.enter_to_generate')}</p>
           </div>
         </div>
       )}
@@ -491,7 +493,7 @@ function UploadTab({ doCreate, stack, setStack, designSystem }: Props) {
           {screenRecorderState === ScreenRecorderState.INITIAL && (
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <div className="h-px w-12 bg-white/20" />
-              <span>or</span>
+              <span>{t('upload.or')}</span>
               <div className="h-px w-12 bg-white/20" />
             </div>
           )}

@@ -8,8 +8,7 @@ import {
   Sparkles,
   Code2,
 } from 'lucide-react';
-
-const navItems = ['功能', '定价', '文档', '关于'];
+import { useTranslation } from '../../i18n';
 
 const fadeUp = (i: number) => ({
   hidden: { opacity: 0, y: 28 },
@@ -29,7 +28,15 @@ interface HeroSectionProps {
 }
 
 function HeroSection({ onStart }: HeroSectionProps) {
+  const { t, language, setLanguage } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navItems = [
+    t('hero.nav.features'),
+    t('hero.nav.pricing'),
+    t('hero.nav.docs'),
+    t('hero.nav.about'),
+  ];
 
   return (
     <section
@@ -99,7 +106,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
               }}
             >
               <Sparkles size={16} className="inline mr-1" />
-              开始使用
+              {t('hero.cta.start')}
             </button>
 
             <button
@@ -109,7 +116,23 @@ function HeroSection({ onStart }: HeroSectionProps) {
                 color: '#192837',
               }}
             >
-              登录
+              {t('hero.cta.login')}
+            </button>
+
+            {/* Language Toggle */}
+            <button
+              onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+              className="rounded-full px-3 py-2 text-xs font-medium transition-all duration-300 hover:brightness-110"
+              style={{
+                background: 'rgba(255,255,255,0.12)',
+                color: '#fff',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,255,255,0.15)',
+              }}
+              title={language === 'zh' ? 'Switch to English' : '切换到中文'}
+            >
+              {language === 'zh' ? '中' : 'EN'}
             </button>
           </div>
 
@@ -188,7 +211,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                   boxShadow: '0 4px 24px rgba(115,66,226,0.35)',
                 }}
               >
-                <span>上传截图开始</span>
+                <span>{t('hero.cta.upload')}</span>
                 <ChevronRight size={20} />
               </motion.button>
             </motion.div>
@@ -284,7 +307,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                     }}
                   >
                     <Sparkles size={16} className="inline mr-1" />
-                    开始使用
+                    {t('hero.cta.start')}
                   </button>
 
                   <button
@@ -294,7 +317,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                       color: '#192837',
                     }}
                   >
-                    登录
+                    {t('hero.cta.login')}
                   </button>
                 </div>
               </div>
@@ -303,7 +326,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
         )}
       </AnimatePresence>
 
-      {/* Workflow Preview Section - P2 */}
+      {/* Workflow Preview Section */}
       <section
         className="relative z-10 mx-auto w-full max-w-[1000px] px-5 sm:px-8"
         style={{ paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(20px, 4vw, 40px)' }}
@@ -319,20 +342,20 @@ function HeroSection({ onStart }: HeroSectionProps) {
             {
               icon: <Upload size={22} />,
               step: '01',
-              title: '上传截图',
-              desc: '拖拽或粘贴设计稿',
+              title: t('hero.workflow.step1.title'),
+              desc: t('hero.workflow.step1.desc'),
             },
             {
               icon: <Sparkles size={22} />,
               step: '02',
-              title: 'AI 分析',
-              desc: '智能识别布局与样式',
+              title: t('hero.workflow.step2.title'),
+              desc: t('hero.workflow.step2.desc'),
             },
             {
               icon: <Code2 size={22} />,
               step: '03',
-              title: '导出代码',
-              desc: '一键复制或下载',
+              title: t('hero.workflow.step3.title'),
+              desc: t('hero.workflow.step3.desc'),
             },
           ].map((item, i) => (
             <div key={item.step} className="flex items-center">
@@ -381,10 +404,10 @@ function HeroSection({ onStart }: HeroSectionProps) {
               letterSpacing: '-0.01em',
             }}
           >
-            为什么选择 <span style={{ color: '#7342E2' }}>PixelCode</span>
+            {t('hero.why.title')}
           </h2>
           <p className="mt-4 text-white/50 text-base max-w-xl mx-auto">
-            从设计到生产级代码，只需几秒
+            {t('hero.why.subtitle')}
           </p>
         </motion.div>
 
@@ -392,33 +415,33 @@ function HeroSection({ onStart }: HeroSectionProps) {
           {[
             {
               num: '01',
-              title: '秒级生成',
-              desc: '上传截图或设计稿，AI 自动生成高质量前端代码，无需手动编写',
+              title: t('hero.features.01.title'),
+              desc: t('hero.features.01.desc'),
             },
             {
               num: '02',
-              title: '多框架支持',
-              desc: '支持 HTML/Tailwind、React、Vue 等主流框架，一键切换技术栈',
+              title: t('hero.features.02.title'),
+              desc: t('hero.features.02.desc'),
             },
             {
               num: '03',
-              title: '中文优化',
-              desc: '针对中文设计稿深度优化，排版、字体、间距识别更精准',
+              title: t('hero.features.03.title'),
+              desc: t('hero.features.03.desc'),
             },
             {
               num: '04',
-              title: '批量处理',
-              desc: '多页面批量生成，Design System 统一管理，团队协作高效',
+              title: t('hero.features.04.title'),
+              desc: t('hero.features.04.desc'),
             },
             {
               num: '05',
-              title: '代码优化',
-              desc: '生成代码自动格式化、响应式适配，可直接用于生产环境',
+              title: t('hero.features.05.title'),
+              desc: t('hero.features.05.desc'),
             },
             {
               num: '06',
-              title: '多模态输入',
-              desc: '支持截图、设计稿、视频录制、文字描述等多种输入方式',
+              title: t('hero.features.06.title'),
+              desc: t('hero.features.06.desc'),
             },
           ].map((feature, i) => (
             <motion.div
@@ -461,13 +484,13 @@ function HeroSection({ onStart }: HeroSectionProps) {
         <div className="mx-auto max-w-[1280px] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <img src="/pixelcode-logo.png" alt="PixelCode" className="h-6 w-auto" />
-            <span className="text-sm font-medium text-white/40">© 2026 PixelCode</span>
+            <span className="text-sm font-medium text-white/40">{t('hero.footer.copyright')}</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">文档</a>
-            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">GitHub</a>
-            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">隐私政策</a>
-            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">服务条款</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">{t('hero.footer.docs')}</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">{t('hero.footer.github')}</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">{t('hero.footer.privacy')}</a>
+            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">{t('hero.footer.terms')}</a>
           </div>
         </div>
       </footer>
