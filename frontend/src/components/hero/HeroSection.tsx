@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowRight,
+  ChevronRight,
   Menu,
   X,
   Upload,
@@ -353,7 +353,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
                 </div>
               </div>
               {i < 2 && (
-                <ArrowRight size={18} className="hidden md:flex mx-3 md:mx-4 text-white/20 shrink-0 self-center" />
+                <ChevronRight size={20} className="hidden md:flex mx-2 md:mx-3 text-purple-400/40 shrink-0 self-center" />
               )}
             </div>
           ))}
