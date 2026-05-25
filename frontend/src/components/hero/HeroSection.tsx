@@ -59,15 +59,12 @@ function HeroSection({ onStart }: HeroSectionProps) {
         {/* Navbar */}
         <nav className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
           {/* Logo */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center">
             <img
               src="/pixelcode-logo.png"
               alt="PixelCode"
-              className="h-10 w-auto"
+              className="h-9 w-auto"
             />
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent tracking-tight">
-              PixelCode
-            </span>
           </div>
 
           {/* Desktop Nav */}
@@ -246,13 +243,12 @@ function HeroSection({ onStart }: HeroSectionProps) {
             >
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-5">
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center">
                   <img
                     src="/pixelcode-logo.png"
                     alt="PixelCode"
-                    className="h-8 w-auto"
+                    className="h-7 w-auto"
                   />
-                  <span className="text-lg font-bold text-white">PixelCode</span>
                 </div>
                 <button
                   onClick={() => setMobileOpen(false)}
@@ -415,7 +411,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
       <footer className="relative z-10 border-t border-white/[0.06] py-10 px-5 sm:px-8">
         <div className="mx-auto max-w-[1280px] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <img src="/pixelcode-logo.png" alt="PixelCode" className="h-7 w-auto" />
+            <img src="/pixelcode-logo.png" alt="PixelCode" className="h-6 w-auto" />
             <span className="text-sm font-medium text-white/40">© 2026 PixelCode</span>
           </div>
           <div className="flex items-center gap-6">

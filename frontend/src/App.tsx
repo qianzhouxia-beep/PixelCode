@@ -746,7 +746,8 @@ function App() {
         />
       )}
 
-      {/* Icon strip - always visible */}
+      {/* Icon strip - hidden on hero/home page */}
+      {!showHero && (
       <div
         className="sticky top-0 z-50 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-16 lg:flex-col"
       >
@@ -783,6 +784,7 @@ function App() {
           }}
         />
       </div>
+      )}
 
       {isCodingOrReady && !isSettingsOpen && (
         <div className="border-b border-gray-200 bg-white px-4 py-2 dark:border-zinc-800 dark:bg-zinc-950 lg:hidden">
@@ -876,7 +878,7 @@ function App() {
             ? "flex flex-1 min-h-0 flex-col lg:h-full lg:pl-16"
             : showContentPanel
               ? "flex flex-1 min-h-0 flex-col lg:h-full lg:pl-[28rem]"
-              : "lg:pl-16"
+              : showHero ? "" : "lg:pl-16"
         } ${isCodingOrReady && !isSettingsOpen && mobilePane === "chat" ? "hidden lg:flex" : ""}`}
       >
         {isSettingsOpen ? (
