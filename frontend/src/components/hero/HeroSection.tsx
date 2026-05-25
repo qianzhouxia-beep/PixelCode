@@ -338,7 +338,7 @@ function HeroSection({ onStart }: HeroSectionProps) {
             <div key={item.step} className="flex items-center">
               <div
                 className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 backdrop-blur-sm"
-                style={{ minWidth: '200px' }}
+                style={{ minWidth: '200px', minHeight: '80px' }}
               >
                 <div
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
