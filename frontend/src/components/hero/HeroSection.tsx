@@ -149,12 +149,9 @@ function HeroSection({ onStart }: HeroSectionProps) {
               }}
             >
               截图转代码，{' '}
-              <span className="inline-flex items-center gap-1.5">
-                <Upload size={26} className="text-violet-300" />
-                AI
-              </span>{' '}
+              <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">AI</span>{' '}
               驱动{' '}
-              <Sparkles size={22} className="inline-block text-violet-400 ml-1" />
+              <Sparkles size={20} className="inline-block text-violet-400 align-middle" />
             </motion.h1>
 
             {/* Subtext */}
