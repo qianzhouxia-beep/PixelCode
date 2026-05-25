@@ -26,16 +26,16 @@ function IconStrip({
   onOpenSettings,
 }: IconStripProps) {
   return (
-    <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 px-2 py-2 dark:border-zinc-800 dark:bg-zinc-900 lg:h-full lg:w-16 lg:flex-col lg:items-center lg:gap-y-3 lg:border-b-0 lg:border-r lg:px-0 lg:py-4">
+    <div className="flex w-full items-center justify-between border-b border-gray-200/60 bg-white/70 backdrop-blur-md px-2 py-2 dark:border-zinc-800/60 dark:bg-zinc-900/70 lg:h-full lg:w-16 lg:flex-col lg:items-center lg:gap-y-3 lg:border-b-0 lg:border-r lg:border-white/10 lg:bg-white/[0.06] lg:backdrop-blur-xl lg:px-0 lg:py-4">
       {/* Logo */}
       <button
         onClick={onLogoClick}
         className="rounded-lg p-2 transition-colors hover:bg-gray-200/70 dark:hover:bg-zinc-800 lg:mb-2 lg:p-1"
       >
         <img
-          src="/favicon/main.png"
-          alt="Logo"
-          className="w-5 h-5 dark:invert"
+          src="/pixelcode-logo.png"
+          alt="PixelCode"
+          className="w-6 h-auto"
         />
       </button>
 
