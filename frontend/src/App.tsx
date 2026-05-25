@@ -904,6 +904,7 @@ function App() {
                 designSystems={designSystems}
                 onAddNewDesignSystem={handleAddNewDesignSystem}
                 onManageDesignSystems={() => openDesignSystemsManager()}
+                onBackToHome={() => setShowHero(true)}
               />
             )}
 
