@@ -4,7 +4,9 @@ import {
   ArrowRight,
   Menu,
   X,
+  Upload,
   Sparkles,
+  Code2,
 } from 'lucide-react';
 
 const navItems = ['功能', '定价', '文档', '关于'];
@@ -17,7 +19,7 @@ const fadeUp = (i: number) => ({
     transition: {
       delay: i * 0.15,
       duration: 0.6,
-      ease: "easeInOut",
+      ease: "easeInOut" as const,
     },
   },
 });
